@@ -32,7 +32,10 @@ export class CustomersDataSource implements DataSource<ICustomerPage> {
                 catchError(() => of([])),
                 finalize(() => this.loadingSubject.next(false))
             )
-            .subscribe(customersPage => {this.customersSubject.next(customersPage); this.customersCountSubject.next(customersPage['total']);});
+            .subscribe(customersPage => {
+                this.customersSubject.next(customersPage);
+                this.customersCountSubject.next(customersPage['total']);
+            });
 
     }
 
@@ -48,5 +51,4 @@ export class CustomersDataSource implements DataSource<ICustomerPage> {
         this.loadingSubject.complete();
         this.customersCountSubject.complete();
     }
-
 }

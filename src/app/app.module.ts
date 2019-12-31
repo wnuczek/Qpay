@@ -10,8 +10,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
-import { MatInputModule, MatPaginatorModule, MatSortModule, MatProgressSpinnerModule } from '@angular/material';
+import {  MatInputModule,
+          MatPaginatorModule,
+          MatSortModule,
+          MatProgressSpinnerModule,
+          MatButtonModule,
+          MatRadioModule,
+          MatOptionModule,
+          MatSelectModule } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -38,6 +46,12 @@ import { PaymentsComponent } from './payments/payments.component';
     MatPaginatorModule,
     MatSortModule,
     MatProgressSpinnerModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatRadioModule,
+    MatOptionModule,
+    MatSelectModule,
     NgbModule
   ],
   providers: [],

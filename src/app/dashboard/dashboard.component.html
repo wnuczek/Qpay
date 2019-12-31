@@ -5,6 +5,21 @@
         <input matInput placeholder="Szukaj klientów" #input>
 
     </mat-form-field>
+
+    <mat-form-field>
+
+        <mat-select placeholder="Kolumny" [formControl]="displayedColumnsForm" [(value)]="displayedColumns" multiple>
+            <mat-select-trigger>
+              {{displayedColumnsForm.value ? displayedColumnsForm.value[0] : ''}}
+              <span *ngIf="displayedColumnsForm.value?.length > 1" class="example-additional-selection">
+                (+{{displayedColumnsForm.value.length - 1}} {{displayedColumnsForm.value?.length === 2 ? 'other' : 'others'}})
+              </span>
+            </mat-select-trigger>
+            <mat-option *ngFor="let column of columns | keyvalue" [value]="column.key">{{column.value}}</mat-option>
+        </mat-select>
+
+    </mat-form-field>
+
 </section>
 <section class="content">
     <div class="spinner-container" *ngIf="dataSource.loading$ | async">
@@ -19,20 +34,57 @@
             <th mat-header-cell *matHeaderCellDef mat-sort-header> L.p. </th>
             <td mat-cell *matCellDef="let customer"> {{customer.id}} </td>
         </ng-container>
-
         <ng-container matColumnDef="fullName">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Pełna nazwa </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Nazwa </th>
             <td mat-cell *matCellDef="let customer"> {{customer.fullName}} </td>
         </ng-container>
-
-        <ng-container matColumnDef="NIP">
+        <ng-container matColumnDef="shortName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Krótka nazwa </th>
+            <td mat-cell *matCellDef="let customer"> {{customer.shortName}} </td>
+        </ng-container>
+        <ng-container matColumnDef="nip">
             <th mat-header-cell *matHeaderCellDef> NIP </th>
             <td mat-cell *matCellDef="let customer"> {{customer.nip}} </td>
         </ng-container>
-
-        <ng-container matColumnDef="addressCity">
+        <ng-container matColumnDef="regon">
+            <th mat-header-cell *matHeaderCellDef> REGON </th>
+            <td mat-cell *matCellDef="let customer"> {{customer.regon}} </td>
+        </ng-container>
+        <ng-container matColumnDef="addresscity">
             <th mat-header-cell *matHeaderCellDef> Miasto </th>
             <td mat-cell *matCellDef="let customer"> {{customer.addresscity}} </td>
+        </ng-container>
+        <ng-container matColumnDef="addresspostCode">
+            <th mat-header-cell *matHeaderCellDef> Kod pocztowy </th>
+            <td mat-cell *matCellDef="let customer"> {{customer.addresspostCode}} </td>
+        </ng-container>
+        <ng-container matColumnDef="address">
+            <th mat-header-cell *matHeaderCellDef> Adres </th>
+            <td mat-cell *matCellDef="let customer"> 
+                {{customer.addressstreet}} {{customer.addressbuildingNo}} 
+                <span *ngIf="customer.addressapartmentNo"> lok. </span>
+                {{customer.addressapartmentNo}} 
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="employees">
+            <th mat-header-cell *matHeaderCellDef> Liczba pracowników </th>
+            <td mat-cell *matCellDef="let customer"> {{customer.employees}} </td>
+        </ng-container>
+        <ng-container matColumnDef="contactname">
+            <th mat-header-cell *matHeaderCellDef> Os. kontaktowa </th>
+            <td mat-cell *matCellDef="let customer"> {{customer.contactname}} </td>
+        </ng-container>
+        <ng-container matColumnDef="contactemail">
+            <th mat-header-cell *matHeaderCellDef> Email </th>
+            <td mat-cell *matCellDef="let customer"> {{customer.contactemail}} </td>
+        </ng-container>
+        <ng-container matColumnDef="contactphone">
+            <th mat-header-cell *matHeaderCellDef> Telefon </th>
+            <td mat-cell *matCellDef="let customer"> {{customer.contactphone}} </td>
+        </ng-container>
+        <ng-container matColumnDef="contactposition">
+            <th mat-header-cell *matHeaderCellDef> Stanowisko </th>
+            <td mat-cell *matCellDef="let customer"> {{customer.contactposition}} </td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
