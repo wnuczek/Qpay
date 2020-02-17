@@ -1,0 +1,53 @@
+<section class="" *ngIf="(customerData$ | async) as customerData">
+<h1 mat-dialog-title>Dane: {{customerData.results[0].fullName}}</h1>
+<div mat-dialog-content class="row">
+<mat-form-field class="col-xs-12 col-sm-6">
+    <mat-label>Pełna nazwa</mat-label>
+    <input matInput [(ngModel)]="customerData.results[0].fullName">
+</mat-form-field>    
+<mat-form-field class="col-xs-12 col-sm-6">
+    <mat-label>Krótka nazwa</mat-label>
+    <input matInput [(ngModel)]="customerData.results[0].shortName">
+  </mat-form-field>
+  <mat-form-field class="col-xs-12 col-sm-3">
+    <mat-label>Ulica</mat-label>
+    <input matInput [(ngModel)]="customerData.results[0].addressstreet">
+  </mat-form-field>
+  <mat-form-field class="col-xs-12 col-sm-2">
+    <mat-label>Nr budynku</mat-label>
+    <input matInput [(ngModel)]="customerData.results[0].addressbuildingNo">
+  </mat-form-field>
+  <mat-form-field class="col-xs-12 col-sm-2">
+    <mat-label>Nr lokalu</mat-label>
+    <input matInput [(ngModel)]="customerData.results[0].addressapartmentNo">
+  </mat-form-field>
+  <mat-form-field class="col-xs-12 col-sm-2">
+    <mat-label>Kod pocztowy</mat-label>
+    <input matInput [(ngModel)]="customerData.results[0].addresspostCode">
+  </mat-form-field>
+  <mat-form-field class="col-xs-12 col-sm-3">
+    <mat-label>Miasto</mat-label>
+    <input matInput [(ngModel)]="customerData.results[0].addresscity">
+  </mat-form-field>
+  <mat-form-field class="col-xs-12 col-sm-4">
+    <mat-label>NIP</mat-label>
+    <input matInput [(ngModel)]="customerData.results[0].nip">
+  </mat-form-field>
+  <mat-form-field class="col-xs-12 col-sm-4">
+    <mat-label>REGON</mat-label>
+    <input matInput [(ngModel)]="customerData.results[0].regon">
+  </mat-form-field>
+  <mat-form-field class="col-xs-12 col-sm-4">
+    <mat-label>Liczba pracowników</mat-label>
+    <input matInput [(ngModel)]="customerData.results[0].employees">
+  </mat-form-field>
+
+  <app-table-generic tableTitle="Polisy" mainRoute="policies" [tableData]="customerPolicies$" [tableColumns]="['id', 'number', 'policyType', 'dateIssued', 'insurer']"></app-table-generic>
+  <app-table-generic tableTitle="Kontakty" mainRoute="contacts" [tableData]="customerContacts$" [tableColumns]="['id', 'contactname', 'contactemail']"></app-table-generic>
+
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Anuluj</button>
+  <button mat-button (click)="updateCustomer(customerData.results[0])" cdkFocusInitial>Zapisz</button>
+</div>
+</section>

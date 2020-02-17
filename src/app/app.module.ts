@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HttpClientModule } from '@angular/common/http';
@@ -17,21 +16,47 @@ import {  MatInputModule,
           MatButtonModule,
           MatRadioModule,
           MatOptionModule,
-          MatSelectModule } from '@angular/material';
+          MatSelectModule,
+          MatDialogModule,
+          MatDialogRef,
+          MatCardModule,
+          MatSidenavModule } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-
-
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { SingleStatComponent } from './dashboard/single-stat/single-stat.component';
+import { TableGenericComponent } from './table-generic/table-generic.component';
+
+import { CustomersComponent } from './customers/customers.component';
+import { CustomerDetailsComponent } from './customers/details/details.component';
+import { CustomerDetailsDummy } from './customers/details/details.dummy';
+
+import { PoliciesComponent } from './policies/policies.component';
+import { PolicyDetailsComponent } from './policies/details/details.component';
+import { PolicyDetailsDummy } from './policies/details/details.dummy';
+
 import { PaymentsComponent } from './payments/payments.component';
+
+import { SidenavComponent } from './sidenav/sidenav.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    PaymentsComponent
+    SingleStatComponent,
+    TableGenericComponent,
+    CustomersComponent,
+    CustomerDetailsComponent,
+    CustomerDetailsDummy,
+    PoliciesComponent,
+    PolicyDetailsComponent,
+    PolicyDetailsDummy,
+    PaymentsComponent,
+    SidenavComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,8 +77,12 @@ import { PaymentsComponent } from './payments/payments.component';
     MatRadioModule,
     MatOptionModule,
     MatSelectModule,
+    MatDialogModule,
+    MatCardModule,
+    MatSidenavModule,
     NgbModule
   ],
+  entryComponents: [CustomerDetailsComponent, PolicyDetailsComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,114 @@
+<section class="container-fluid fullscreen">
+<section class="toolbar">
+    <mat-form-field>
+
+        <input matInput placeholder="Szukaj polis" #customerFilter>
+
+    </mat-form-field>
+    <mat-form-field>
+
+        <input matInput placeholder="Szukaj polis" #customerFilter2>
+
+    </mat-form-field>
+
+    <mat-form-field>
+
+        <mat-select placeholder="Kolumny" [formControl]="displayedColumnsForm" [(value)]="displayedColumns" multiple>
+            <mat-select-trigger>
+              {{displayedColumnsForm.value ? displayedColumnsForm.value[0] : ''}}
+              <span *ngIf="displayedColumnsForm.value?.length > 1" class="example-additional-selection">
+                (+{{displayedColumnsForm.value.length - 1}} {{displayedColumnsForm.value?.length === 2 ? 'other' : 'others'}})
+              </span>
+            </mat-select-trigger>
+            <mat-option *ngFor="let column of columns | keyvalue" [value]="column.key">{{column.value}}</mat-option>
+        </mat-select>
+
+    </mat-form-field>
+
+</section>
+<section class="content">
+    <div class="spinner-container" *ngIf="dataSource.loading$ | async">
+
+        <mat-spinner></mat-spinner>
+
+    </div>
+
+    <mat-table [dataSource]="dataSource" matSort matSortActive="id" matSortDirection="asc" matSortDisableClear>
+
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> L.p. </th>
+            <td mat-cell *matCellDef="let customer"> {{customer.id}} </td>
+        </ng-container>
+        <ng-container matColumnDef="policyType">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Typ polisy </th>
+            <td mat-cell *matCellDef="let customer"> {{customer.policyType}} </td>
+        </ng-container>
+        <ng-container matColumnDef="number">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Numer polisy </th>
+            <td mat-cell *matCellDef="let customer"> {{customer.number}} </td>
+        </ng-container>
+        <ng-container matColumnDef="customerId">
+            <th mat-header-cell *matHeaderCellDef> Id klienta </th>
+            <td mat-cell *matCellDef="let customer"> {{customer.customerId}} </td>
+        </ng-container>
+        <ng-container matColumnDef="insurer">
+            <th mat-header-cell *matHeaderCellDef> TU </th>
+            <td mat-cell *matCellDef="let customer"> {{customer.insurer}} </td>
+        </ng-container>
+        <ng-container matColumnDef="itemsInsured">
+            <th mat-header-cell *matHeaderCellDef> Ubezpieczone </th>
+            <td mat-cell *matCellDef="let customer"> {{customer.itemsInsured}} </td>
+        </ng-container>
+        <ng-container matColumnDef="dateIssued">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Data wystawienia </th>
+            <td mat-cell *matCellDef="let customer"> {{customer.dateIssued  |  date:'dd.MM.yyyy'}} </td>
+        </ng-container>
+        <ng-container matColumnDef="insuredFrom">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Trwa od </th>
+            <td mat-cell *matCellDef="let customer"> {{customer.insuredFrom}} </td>
+        </ng-container>
+        <ng-container matColumnDef="insuredUntil">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Trwa do </th>
+            <td mat-cell *matCellDef="let customer"> {{customer.insuredUntil}} </td>
+        </ng-container>
+        <ng-container matColumnDef="feeParts">
+            <th mat-header-cell *matHeaderCellDef> Ilośc rat </th>
+            <td mat-cell *matCellDef="let customer"> {{customer.feeParts}} </td>
+        </ng-container>
+        <ng-container matColumnDef="feeAmount">
+            <th mat-header-cell *matHeaderCellDef> Rata składki </th>
+            <td mat-cell *matCellDef="let customer"> {{customer.feeAmount}} </td>
+        </ng-container>
+        <ng-container matColumnDef="feeTotal">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Składka </th>
+            <td mat-cell *matCellDef="let customer"> {{customer.feeTotal}} </td>
+        </ng-container>
+        <ng-container matColumnDef="brokerage">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Kurtaz </th>
+            <td mat-cell *matCellDef="let customer"> {{customer.brokerage}} </td>
+        </ng-container>
+        <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef> Status </th>
+            <td mat-cell *matCellDef="let customer"> {{customer.status}} </td>
+        </ng-container>
+        <ng-container matColumnDef="history">
+            <th mat-header-cell *matHeaderCellDef> Kontynuacja </th>
+            <td mat-cell *matCellDef="let customer"> {{customer.history}} </td>
+        </ng-container>
+        <ng-container matColumnDef="keeperId">
+            <th mat-header-cell *matHeaderCellDef> Id opiekuna </th>
+            <td mat-cell *matCellDef="let customer"> {{customer.keeperId}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['details/', row.id]"></tr>
+
+    </mat-table>
+</section>
+<section class="footer">
+    <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" [length]="dataSource.total$ | async"></mat-paginator>
+</section>
+
+<router-outlet></router-outlet>
+
+</section>

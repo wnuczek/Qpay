@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+
 //import { RouterModule } from '@angular/router';
 
 @Component({
@@ -12,8 +13,16 @@ export class AppComponent {
     { path: '',
       label: 'Dashboard'
     },
+    { path: 'customers',
+      label: 'Klienci'
+    },
+    { path: 'policies',
+      label: 'Polisy'
+    },
     { path: 'payments',
       label: 'Płatności'
     }
   ];
+  @ViewChild('sidenav', { static: true }) sidenav;
+
 }
