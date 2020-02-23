@@ -58,13 +58,13 @@ export class PoliciesComponent implements OnInit, AfterViewInit {
                 keeperId: 15
                 };
 
-  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  @ViewChild(MatSort, { static: false }) sort: MatSort;
+  @ViewChild(MatSort) sort: MatSort;
 
-  @ViewChild('customerFilter', { static: false }) customerFilter: ElementRef;
+  @ViewChild('customerFilter') customerFilter: ElementRef;
 
-  @ViewChild('customerFilter2', { static: false }) customerFilter2: ElementRef;
+  @ViewChild('customerFilter2') customerFilter2: ElementRef;
 
   constructor(
     private route: ActivatedRoute,

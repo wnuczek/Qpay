@@ -55,11 +55,11 @@ export class CustomersComponent implements OnInit, AfterViewInit {
                   policyFee: 14
                 };
 
-  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  @ViewChild(MatSort, { static: false }) sort: MatSort;
+  @ViewChild(MatSort) sort: MatSort;
 
-  @ViewChild('input', { static: false }) input: ElementRef;
+  @ViewChild('input') input: ElementRef;
 
   constructor(
     private route: ActivatedRoute,
