@@ -32,6 +32,9 @@ import { TableGenericComponent } from './table-generic/table-generic.component';
 import { CustomersComponent } from './customers/customers.component';
 import { CustomerDetailsComponent } from './customers/details/details.component';
 import { CustomerDetailsDummy } from './customers/details/details.dummy';
+import { CustomerAddComponent } from './customers/add/add.component';
+import { CustomerAddDummy } from './customers/add/add.dummy';
+
 
 import { PoliciesComponent } from './policies/policies.component';
 import { PolicyDetailsComponent } from './policies/details/details.component';
@@ -51,6 +54,8 @@ import { SidenavComponent } from './sidenav/sidenav.component';
     CustomersComponent,
     CustomerDetailsComponent,
     CustomerDetailsDummy,
+    CustomerAddComponent,
+    CustomerAddDummy,
     PoliciesComponent,
     PolicyDetailsComponent,
     PolicyDetailsDummy,

@@ -19,7 +19,9 @@
         </mat-select>
 
     </mat-form-field>
-
+    <aside class="right">
+        <button mat-fab color="primary" [routerLink]="['add']"><i class="material-icons">add</i></button>
+    </aside>
 </section>
 <section class="content">
     <div class="spinner-container" *ngIf="dataSource.loading$ | async">

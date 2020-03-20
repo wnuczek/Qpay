@@ -7,6 +7,7 @@ import { PoliciesComponent } from './policies/policies.component';
 import { CustomerDetailsComponent } from './customers/details/details.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { CustomerDetailsDummy } from './customers/details/details.dummy';
+import { CustomerAddDummy } from './customers/add/add.dummy';
 import { PolicyDetailsDummy } from './policies/details/details.dummy';
 
 
@@ -19,7 +20,8 @@ const routes: Routes = [
     path: 'customers',
     component: CustomersComponent,
     children: [
-      {path: 'details/:id', component: CustomerDetailsDummy}
+      {path: 'details/:id', component: CustomerDetailsDummy},
+      {path: 'add', component: CustomerAddDummy}
     ]
   },
   {
