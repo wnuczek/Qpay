@@ -1,6 +1,6 @@
 import { CollectionViewer, DataSource } from '@angular/cdk/collections';
 import { Observable, BehaviorSubject, of } from 'rxjs';
-import { IPolicy, IPolicyPage } from '../../../QpayAPI/app/interfaces/policy.interface';
+import { IPolicy, IPolicyPage } from '../../../../QpayAPI/app/interfaces/policy.interface';
 import { PoliciesService } from './policies.service';
 import { catchError, finalize } from 'rxjs/operators';
 import { debounceTime, distinctUntilChanged, startWith, tap, map, delay } from 'rxjs/operators';

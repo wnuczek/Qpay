@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { ICustomer, ICustomerPage } from '../../../QpayAPI/app/interfaces/customer.interface';
+import { ICustomer, ICustomerPage } from '../../../../QpayAPI/app/interfaces/customer.interface';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-import { environment } from '../environments/environment';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,7 @@ export class CustomersService {
     if (page) {requestURL += 'page=' + page + '&'; }
     if (perPage) {requestURL += 'perPage=' + perPage + '&'; }
     if (sortBy) {requestURL += 'sortBy=' + sortBy; }
-
+    console.log("Getting " + `${this.apiURL}/customersdetailed${requestURL}`);
     return this.http.get<ICustomerPage[]>(`${this.apiURL}/customersdetailed${requestURL}`);
   }
 
@@ -28,6 +28,13 @@ export class CustomersService {
 
   getCustomersSingleStat(stat: string): Observable<any> {
     return this.http.get(`${this.apiURL}/stats/customers/${stat}`);
+  }
+
+  addCustomer(customer: ICustomer | number): Observable<any> {
+    const url = `${this.apiURL}/customer`;
+    return this.http.post(url, customer).pipe(
+      tap()
+    );
   }
 
   updateCustomer(customer: ICustomer | number): Observable<any> {

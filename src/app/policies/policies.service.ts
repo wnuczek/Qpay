@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { IPolicy, IPolicyPage } from '../../../QpayAPI/app/interfaces/policy.interface';
+import { IPolicy, IPolicyPage } from '../../../../QpayAPI/app/interfaces/policy.interface';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { map } from 'rxjs/operators';
 
-import { environment } from '../environments/environment';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -33,10 +33,8 @@ export class PoliciesService {
       );
   }
 
-  getPolicyDetails(id: string): Observable<IPolicy> {
-    return this.http.get(`${this.apiURL}/policy/${id}`).pipe(map(
-      res => {return res.results[0]}
-    ));
+  getPolicyDetails(id: string): Observable<any> {
+    return this.http.get(`${this.apiURL}/policy/${id}`);
   }
 
   getCustomerPolicies(id) {

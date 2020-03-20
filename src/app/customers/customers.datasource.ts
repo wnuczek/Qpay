@@ -1,6 +1,6 @@
 import { CollectionViewer, DataSource } from '@angular/cdk/collections';
 import { Observable, BehaviorSubject, of } from 'rxjs';
-import { ICustomer, ICustomerPage } from '../../../QpayAPI/app/interfaces/customer.interface';
+import { ICustomer, ICustomerPage } from '../../../../QpayAPI/app/interfaces/customer.interface';
 import { CustomersService } from './customers.service';
 import { catchError, finalize } from 'rxjs/operators';
 import { debounceTime, distinctUntilChanged, startWith, tap, map, delay } from 'rxjs/operators';

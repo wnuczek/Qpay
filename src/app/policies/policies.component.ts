@@ -1,13 +1,13 @@
 import { Component, OnInit, ViewChild, AfterViewInit, ElementRef, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PoliciesService } from '../policies.service';
+import { PoliciesService } from './policies.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { FormControl } from '@angular/forms';
 
 import { debounceTime, distinctUntilChanged, startWith, tap, delay, map } from 'rxjs/operators';
 import { merge, fromEvent } from 'rxjs';
-import { PoliciesDataSource } from '../policies.datasource';
+import { PoliciesDataSource } from './policies.datasource';
 
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 // import { ModalComponent } from '../details/modal.component';

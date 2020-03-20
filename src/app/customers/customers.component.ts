@@ -1,13 +1,13 @@
 import { Component, OnInit, ViewChild, AfterViewInit, ElementRef, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CustomersService } from '../customers.service';
+import { CustomersService } from './customers.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { FormControl } from '@angular/forms';
 
 import { debounceTime, distinctUntilChanged, startWith, tap, delay, map } from 'rxjs/operators';
 import { merge, fromEvent } from 'rxjs';
-import { CustomersDataSource } from '../customers.datasource';
+import { CustomersDataSource } from './customers.datasource';
 
 @Component({
   selector: 'app-customers',
