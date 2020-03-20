@@ -21,7 +21,7 @@ import { Router, ActivatedRoute } from '@angular/router';
             data: id
         });
         dialogRef.afterClosed().subscribe(result => {
-            this.router.navigate(['../../'], { relativeTo: this.route });
+            this.router.navigate(['/customers'], { relativeTo: this.route });
             console.log('The dialog was closed');
         });
     }

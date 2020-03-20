@@ -47,7 +47,7 @@
 
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">Anuluj</button>
-  <button mat-button (click)="updateCustomer(customerData.results[0])" cdkFocusInitial>Zapisz</button>
+  <button mat-flat-button (click)="onNoClick()">Anuluj</button>
+  <button mat-flat-button color="primary" (click)="updateCustomer(customerData.results[0])">Zapisz</button>
 </div>
 </section>
