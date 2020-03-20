@@ -1,6 +1,9 @@
-<div *ngIf="(tableData | async) as tableData">
-  <h1 mat-dialog-title>{{tableTitle}}</h1>
-  <mat-table [dataSource]="tableData.results">
+<div>
+  <section class="title">
+    <h1 mat-dialog-title>{{tableTitle}}</h1>
+    <button mat-mini-fab color="primary" [routerLink]="['add']" class="right"><i class="material-icons">add</i></button>
+  </section>
+  <mat-table *ngIf="(tableData | async) as tableData" [dataSource]="tableData.results">
 
       <ng-container *ngFor="let col of displayedColumns" [matColumnDef]="col">
             <th mat-header-cell *matHeaderCellDef>{{ col }}</th>
