@@ -1,25 +1,14 @@
-<mat-sidenav-container>
-  <mat-sidenav-content>
-  
-
-    <mat-toolbar color="primary">
-      {{title}}
-    </mat-toolbar>
-    <nav mat-tab-nav-bar>
-      <a mat-tab-link
-         *ngFor="let link of navLinks"
-         [routerLink]="link.path"
-         routerLinkActive #rla="routerLinkActive"
-         [routerLinkActiveOptions]="{exact:true}"
-         [active]="rla.isActive">
-        {{link.label}}
-      </a>
-    </nav>
-    <router-outlet></router-outlet>
-
-
-  </mat-sidenav-content>
-  <mat-sidenav mode="over" [opened]="openSidebar" position="end" disableClose="true">
-    <router-outlet name="side" (activate)="openSidebar = true" (deactivate)="openSidebar = false"></router-outlet>
-  </mat-sidenav>
-</mat-sidenav-container>
+<mat-toolbar color="primary">
+  {{title}}
+</mat-toolbar>
+<nav mat-tab-nav-bar>
+  <a mat-tab-link
+      *ngFor="let link of navLinks"
+      [routerLink]="link.path"
+      routerLinkActive #rla="routerLinkActive"
+      [routerLinkActiveOptions]="{exact:true}"
+      [active]="rla.isActive">
+    {{link.label}}
+  </a>
+</nav>
+<router-outlet></router-outlet>
