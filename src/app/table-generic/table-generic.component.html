@@ -1,7 +1,7 @@
 <div>
   <section class="title">
     <h1 mat-dialog-title>{{tableTitle}}</h1>
-    <button mat-mini-fab color="primary" [routerLink]="['add']" class="right"><i class="material-icons">add</i></button>
+    <button mat-mini-fab color="primary" [routerLink]="['/', mainRoute, 'add']" class="right"><i class="material-icons">add</i></button>
   </section>
   <mat-table *ngIf="(tableData | async) as tableData" [dataSource]="tableData.results">
 
@@ -11,7 +11,7 @@
       </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/',mainRoute,'details',row.id]"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/', mainRoute, 'details', row.id]"></tr>
 
     </mat-table>
 </div>

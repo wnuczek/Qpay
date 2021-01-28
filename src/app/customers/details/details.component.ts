@@ -8,7 +8,7 @@ import { ContactsService } from '../../contacts.service';
 import { Observable } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import  {MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-details',
@@ -41,23 +41,29 @@ export class CustomerDetailsComponent implements OnInit {
   }
 
   getCustomerData(id) {
-    console.log('getting details of ' + id);
+    //console.log('getting details of ' + id);
     const customers = this.customersService.getCustomerDetails(id).subscribe( data => { console.log(data); });
     return this.customersService.getCustomerDetails(id);
   }
 
   updateCustomer(customerData): void {
-    console.log(this.customerData$);
-    this.customersService.updateCustomer(customerData).subscribe( data => { console.log(data); });
+    //console.log(this.customerData$);
+    this.customersService.updateCustomer(customerData).subscribe( data => { 
+      console.log(data);
+      if (data.Message=='Updated customer') {
+        console.log('customer updated with data: ' + data.Result[0]);
+        this.dialogRef.close(data);
+      }
+    });
   }
 
   getCustomerPolicies(id) {
-    console.log('getting policies of ' + id);
+    //console.log('getting policies of ' + id);
     return this.policiesService.getCustomerPolicies(id);
   }
 
   getCustomerContacts(id) {
-    console.log('getting contacts of ' + id);
+    //console.log('getting contacts of ' + id);
     return this.contactsService.getCustomerContacts(id);
   }
 

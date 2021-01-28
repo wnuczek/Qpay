@@ -40,7 +40,7 @@ export class CustomersDataSource implements DataSource<ICustomerPage> {
     }
 
     connect(collectionViewer: CollectionViewer): Observable<ICustomerPage[]> {
-        console.log('Connecting data source');
+        //console.log('Connecting data source');
         return this.customersSubject.asObservable().pipe(
             map(result => result['results'])
           );

@@ -33,9 +33,9 @@ export class PolicyDetailsComponent implements OnInit {
     const id = this.data;
     this.policyData$ = this.getPolicyData(id);
 
-    let customerId2 = this.policyData$.subscribe(res => {this.customerId = res.customerId; console.log(this.customerId)});
-    this.customerPolicies$ = this.getCustomerPolicies(this.customerId);
-    this.customerDetails$ = this.getPolicyOwner(this.customerId);
+    let customerId2 = this.policyData$.subscribe(res => {this.customerId = res['results'][0].customerId; console.log(this.customerId); this.customerPolicies$ = this.getCustomerPolicies(this.customerId);
+    this.customerDetails$ = this.getPolicyOwner(this.customerId);});
+    
     // this.customerPolicies$.subscribe(res => { console.log(res.results) });
   }
 

@@ -21,7 +21,7 @@ export class PoliciesService {
     if (perPage) {requestURL += 'perPage=' + perPage + '&'; }
     if (sortBy) {requestURL += 'sortBy=' + sortBy; }
 
-    return this.http.get<IPolicyPage[]>(`${this.apiURL}/policies${requestURL}`);
+    return this.http.get<IPolicyPage[]>(`${this.apiURL}/policiescustomers${requestURL}`);
   }
 
   updatePolicy (policy: IPolicy | number): Observable<any> {

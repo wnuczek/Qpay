@@ -22,6 +22,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSortModule } from '@angular/material/sort';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSnackBarModule } from '@angular/material/snack-bar'; 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -44,6 +45,7 @@ import { PolicyDetailsDummy } from './policies/details/details.dummy';
 import { PaymentsComponent } from './payments/payments.component';
 
 import { SidenavComponent } from './sidenav/sidenav.component';
+import { TableComponent } from './customers/table/table/table.component';
 
 
 @NgModule({
@@ -62,7 +64,8 @@ import { SidenavComponent } from './sidenav/sidenav.component';
     PolicyDetailsDummy,
     PaymentsComponent,
     SidenavComponent,
-  ],
+    TableComponent,
+    ],
   imports: [
     BrowserModule,
     CommonModule,
@@ -86,9 +89,10 @@ import { SidenavComponent } from './sidenav/sidenav.component';
     MatDialogModule,
     MatCardModule,
     MatSidenavModule,
+    MatSnackBarModule,
     NgbModule
   ],
-  entryComponents: [CustomerDetailsComponent, PolicyDetailsComponent],
+  entryComponents: [CustomerDetailsComponent, CustomerAddComponent, PolicyDetailsComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

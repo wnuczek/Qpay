@@ -18,8 +18,10 @@ import { Router, ActivatedRoute } from '@angular/router';
             width: '70vw',
         });
         dialogRef.afterClosed().subscribe(result => {
-            this.router.navigate(['/customers'], { relativeTo: this.route });
-            console.log('The dialog was closed');
+            if(result) 
+                this.router.navigate(['/customers/details', result], { relativeTo: this.route });
+            else
+                this.router.navigate(['/customers'], { relativeTo: this.route });
         });
     }
 }

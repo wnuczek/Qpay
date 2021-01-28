@@ -18,8 +18,8 @@ export class CustomersService {
     if (page) {requestURL += 'page=' + page + '&'; }
     if (perPage) {requestURL += 'perPage=' + perPage + '&'; }
     if (sortBy) {requestURL += 'sortBy=' + sortBy; }
-    console.log("Getting " + `${this.apiURL}/customersdetailed${requestURL}`);
-    return this.http.get<ICustomerPage[]>(`${this.apiURL}/customersdetailed${requestURL}`);
+    //console.log("Getting " + `${this.apiURL}/customers${requestURL}`);
+    return this.http.get<ICustomerPage[]>(`${this.apiURL}/customers${requestURL}`);
   }
 
   getCustomerDetails(id: string): Observable<ICustomer> {
@@ -39,7 +39,7 @@ export class CustomersService {
 
   updateCustomer(customer: ICustomer | number): Observable<any> {
       const id = typeof customer === 'number' ? customer : customer.id;
-      console.log(id);
+      //console.log(id);
       const url = `${this.apiURL}/customer/${id}`;
       return this.http.put(url, customer).pipe(
         tap()

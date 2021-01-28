@@ -1,4 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
+import { NotificationService } from './notification.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 //import { RouterModule } from '@angular/router';
 
@@ -25,4 +27,11 @@ export class AppComponent {
   ];
   @ViewChild('sidenav', { static: true }) sidenav;
 
+  constructor(
+    private notificationService: NotificationService,
+    private snackBar: MatSnackBar) {
+      this.notificationService.notification$.subscribe(message => {
+        this.snackBar.open(message,'X',{duration: 5000});
+      });
+    }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { PolicyDetailsComponent } from './details.component';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -10,7 +11,8 @@ import { Router, ActivatedRoute } from '@angular/router';
   export class PolicyDetailsDummy {
     constructor(public dialog: MatDialog,
                 private router: Router,
-                private route: ActivatedRoute) {
+                private route: ActivatedRoute,
+                private location: Location) {
       this.openDialog();
     }
     openDialog(): void {
@@ -21,6 +23,7 @@ import { Router, ActivatedRoute } from '@angular/router';
             data: id
         });
         dialogRef.afterClosed().subscribe(result => {
+            //this.location.back();
             this.router.navigate(['../../'], { relativeTo: this.route });
             console.log('The dialog was closed');
         });

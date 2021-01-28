@@ -1,53 +1,52 @@
 <section class="">
 <h1 mat-dialog-title>Dodaj klienta:</h1>
-<div mat-dialog-content class="row">
-<mat-form-field class="col-xs-12 col-sm-6">
-    <mat-label>Pełna nazwa</mat-label>
-    <input matInput [(ngModel)]="customerData.fullName">
-</mat-form-field>    
-<mat-form-field class="col-xs-12 col-sm-6">
-    <mat-label>Krótka nazwa</mat-label>
-    <input matInput [(ngModel)]="customerData.shortName">
-  </mat-form-field>
-  <mat-form-field class="col-xs-12 col-sm-3">
-    <mat-label>Ulica</mat-label>
-    <input matInput [(ngModel)]="customerData.addressstreet">
-  </mat-form-field>
-  <mat-form-field class="col-xs-12 col-sm-2">
-    <mat-label>Nr budynku</mat-label>
-    <input matInput [(ngModel)]="customerData.addressbuildingNo">
-  </mat-form-field>
-  <mat-form-field class="col-xs-12 col-sm-2">
-    <mat-label>Nr lokalu</mat-label>
-    <input matInput [(ngModel)]="customerData.addressapartmentNo">
-  </mat-form-field>
-  <mat-form-field class="col-xs-12 col-sm-2">
-    <mat-label>Kod pocztowy</mat-label>
-    <input matInput [(ngModel)]="customerData.addresspostCode">
-  </mat-form-field>
-  <mat-form-field class="col-xs-12 col-sm-3">
-    <mat-label>Miasto</mat-label>
-    <input matInput [(ngModel)]="customerData.addresscity">
-  </mat-form-field>
-  <mat-form-field class="col-xs-12 col-sm-4">
-    <mat-label>NIP</mat-label>
-    <input matInput [(ngModel)]="customerData.nip">
-  </mat-form-field>
-  <mat-form-field class="col-xs-12 col-sm-4">
-    <mat-label>REGON</mat-label>
-    <input matInput [(ngModel)]="customerData.regon">
-  </mat-form-field>
-  <mat-form-field class="col-xs-12 col-sm-4">
-    <mat-label>Liczba pracowników</mat-label>
-    <input matInput [(ngModel)]="customerData.employees">
-  </mat-form-field>
+<form [formGroup]="addCustomerForm" (ngSubmit)="onSubmit()">
+  <div mat-dialog-content class="row">
+  <mat-form-field required class="col-xs-12 col-sm-6">
+      <mat-label>Pełna nazwa</mat-label>
+      <input matInput formControlName="fullName">
+  </mat-form-field>    
+  <mat-form-field class="col-xs-12 col-sm-6">
+      <mat-label>Krótka nazwa</mat-label>
+      <input matInput formControlName="shortName">
+    </mat-form-field>
+    <mat-form-field class="col-xs-12 col-sm-3">
+      <mat-label>Ulica</mat-label>
+      <input matInput formControlName="addressstreet">
+    </mat-form-field>
+    <mat-form-field class="col-xs-12 col-sm-2">
+      <mat-label>Nr budynku</mat-label>
+      <input matInput formControlName="addressbuildingNo">
+    </mat-form-field>
+    <mat-form-field class="col-xs-12 col-sm-2">
+      <mat-label>Nr lokalu</mat-label>
+      <input matInput formControlName="addressapartmentNo">
+    </mat-form-field>
+    <mat-form-field class="col-xs-12 col-sm-2">
+      <mat-label>Kod pocztowy</mat-label>
+      <input matInput formControlName="addresspostCode">
+    </mat-form-field>
+    <mat-form-field class="col-xs-12 col-sm-3">
+      <mat-label>Miasto</mat-label>
+      <input matInput formControlName="addresscity">
+    </mat-form-field>
+    <mat-form-field required class="col-xs-12 col-sm-4">
+      <mat-label>NIP</mat-label>
+      <input matInput formControlName="nip">
+    </mat-form-field>
+    <mat-form-field class="col-xs-12 col-sm-4">
+      <mat-label>REGON</mat-label>
+      <input matInput formControlName="regon">
+    </mat-form-field>
+    <mat-form-field class="col-xs-12 col-sm-4">
+      <mat-label>Liczba pracowników</mat-label>
+      <input matInput formControlName="employees">
+    </mat-form-field>
 
-  <app-table-generic tableTitle="Polisy" mainRoute="policies" [tableData]="" [tableColumns]="['id', 'number', 'policyType', 'dateIssued', 'insurer']"></app-table-generic>
-  <app-table-generic tableTitle="Kontakty" mainRoute="contacts" [tableData]="" [tableColumns]="['id', 'contactname', 'contactemail']"></app-table-generic>
-
-</div>
-<div mat-dialog-actions>
-  <button mat-flat-button (click)="onNoClick()">Anuluj</button>
-  <button mat-flat-button color="primary" (click)="addCustomer(customerData)">Zapisz</button>
-</div>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-flat-button (click)="onNoClick()">Anuluj</button>
+    <button mat-flat-button color="primary">Zapisz</button>
+  </div>
+</form>
 </section>

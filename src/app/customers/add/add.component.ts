@@ -9,6 +9,9 @@ import { Observable } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { NotificationService } from '../../notification.service';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-add',
@@ -17,56 +20,59 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 })
 export class CustomerAddComponent implements OnInit {
   customerData$: Observable<ICustomer>;
-  customerPolicies$: Observable<IPolicyPage>;
-  customerContacts$: Observable<IContactPage>;
-
-  customerData;
+  addCustomerForm: FormGroup;
+  submitted = false;
 
   constructor(
     private route: ActivatedRoute,
     private customersService: CustomersService,
-    private policiesService: PoliciesService,
-    private contactsService: ContactsService,
+    private notificationService: NotificationService,
+    private formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<CustomerAddComponent>,
     @Inject(MAT_DIALOG_DATA) public data) {}
 
   ngOnInit() {
-    //const id = this.data;
-    //this.customerData$ = this.getCustomerData(id);
-    //this.customerPolicies$ = this.getCustomerPolicies(id);
-    //this.customerContacts$ = this.getCustomerContacts(id);
-    this.customerData = {};
-    // this.customerPolicies$.subscribe(res => { console.log(res.results) });
+    this.addCustomerForm = this.formBuilder.group({
+      fullName: ['', Validators.required],
+      shortName: [''],
+      addressstreet: [''],
+      addressbuildingNo: [''],
+      addressapartmentNo: [''],
+      addresspostCode: [''],
+      addresscity: [''],
+      nip: ['', Validators.required],
+      regon: [''],
+      employees: ['']
+  });
+  }
+
+  // convenience getter for easy access to form fields
+  //get f() { return this.addCustomerForm.controls; }
+
+  onSubmit() {
+      this.submitted = true;
+      if (this.addCustomerForm.invalid) {
+        this.notificationService.notification$.next('Formularz zawiera błędy');
+        return;
+      }
+      this.addCustomer(this.addCustomerForm.value);
   }
 
   onNoClick(): void {
+    this.notificationService.notification$.next('Anulowano dodawanie klienta');
     this.dialogRef.close();
   }
 
-  getCustomerData(id) {
-    console.log('getting details of ' + id);
-    const customers = this.customersService.getCustomerDetails(id).subscribe( data => { console.log(data); });
-    return this.customersService.getCustomerDetails(id);
-  }
-
-  updateCustomer(customerData): void {
-    console.log(this.customerData$);
-    this.customersService.updateCustomer(customerData).subscribe( data => { console.log(data); });
-  }
-
   addCustomer(customerData): void {
-    console.log(customerData);
-    this.customersService.addCustomer(customerData).subscribe( data => { console.log(data); });
+    this.customersService.addCustomer(customerData).subscribe(res => {
+      console.log(res);
+      let addedId = res['Result'].id;
+      this.notificationService.notification$.next('Dodano klienta');
+      console.log(addedId);
+      this.dialogRef.close(addedId);
+    });
+
   }
 
-  getCustomerPolicies(id) {
-    console.log('getting policies of ' + id);
-    return this.policiesService.getCustomerPolicies(id);
-  }
-
-  getCustomerContacts(id) {
-    console.log('getting contacts of ' + id);
-    return this.contactsService.getCustomerContacts(id);
-  }
 
 }

@@ -9,11 +9,16 @@ mat-table
             outline: none
     .mat-cell
         padding: 0 1rem
+        position: relative
         &:hover
             //cursor: pointer
             //background: wheat
+     
+
+
 .fullscreen
     height: calc(100vh - 64px - 49px)
+    overflow-y: scroll
     .toolbar
         height: 85px
         padding-top: 1.25em
@@ -22,14 +27,12 @@ mat-table
         aside.right
             width: auto
             float: right
+            button
+                &:focus
+                    outline: none
     .content 
         height: calc(100vh - 85px - 56px - 64px - 49px)
         overflow-y: scroll
-        .spinner-container
-            display: flex
-            justify-content: center
-            height: 100%
-            align-items: center
     .footer
         height: 56px
 

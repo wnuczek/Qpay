@@ -12,9 +12,9 @@ export class TableGenericComponent implements OnInit {
   @Input() tableColumns;
   @Input() tableTitle;
   @Input() mainRoute;
-  displayedColumns = this.tableColumns;
-  route = this.mainRoute;
-  constructor() { }
+  displayedColumns: Array<string>;
+
+  constructor() {}
 
   ngOnInit() {
     this.tableData.subscribe(res => console.log(res.results));
